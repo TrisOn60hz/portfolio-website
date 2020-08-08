@@ -1,3 +1,6 @@
+@import "config";
+@import "menu";
+
 $primary-color: #444;
 $secondary-color: #1faed1;
 $show-home-image: true;
@@ -32,6 +35,7 @@ $background-opacity: 0.2;
 html {
   font-size: 10px;
 }
+
 * {
   box-sizing: border-box;
 }
