@@ -6,12 +6,18 @@ const menuBranding = document.querySelector(".menu-branding");
 const navItems = document.querySelectorAll(".navItems");
 
 //Set Initial State of Menu
-let showMenu = fales;
+let showMenu = false;
 
-menuBtn.addEventListener("click, toggleMenu");
+menuBtn.addEventListener("click", toggleMenu);
 
 function toggleMenu() {
   if (!showMenu) {
+    menuBtn.classList.add("close");
+    menu.classList.add("show");
+    menuNav.classList.add("show");
+    menuBranding.classList.add("show");
+    navItems.forEach((item) => item.classList.remove("show"));
+
     // Set Menu State
     showMenu = true;
   } else {
