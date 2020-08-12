@@ -12,12 +12,12 @@
     height: 3px;
     margin: 0 0 5px 0;
     background: white;
-    @include easeOut;
+    // @include easeOut;
   }
 
   //  Rotate Into X With Menu Line
   &.close {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
 
     .btn-line {
       // Line 1 - Rotate
@@ -38,11 +38,15 @@
   }
 }
 
-//Menu Overlay
+// Menu Overlay
 .menu {
   position: fixed;
   top: 0;
   width: 100%;
   opacity: 0.9;
   visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
 }
