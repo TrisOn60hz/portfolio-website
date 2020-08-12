@@ -105,4 +105,11 @@ main {
       margin-top: 20vh;
     }
   }
+
+  // Branding Side;
+  &-branding {
+    background: #444;
+    transform: translate3d(0, 100%, 0);
+    @include easeOut;
+  }
 }
