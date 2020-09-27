@@ -1,41 +1,6 @@
 @import "config";
 @import "menu";
 
-$primary-color: #444;
-$secondary-color: #1faed1;
-$show-home-image: true;
-$home-image: url(../img/background.jpg);
-$background-opacity: 0.2;
-
-@mixin easeOut {
-  transition: all 0.25s ease-out;
-}
-
-@mixin background {
-  @if $show-home-image {
-    &#bg-img {
-      background: $home-image;
-      background-attachment: fixed;
-      background-size: cover;
-
-      &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: rgba($primary-color, $background-opacity);
-      }
-    }
-  }
-}
-
-html {
-  font-size: 10px;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -43,7 +8,7 @@ html {
 body {
   @include background;
   background: $primary-color;
-  color: white;
+  color: set-text-color($primary-color);
   height: 100%;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -58,7 +23,7 @@ h3 {
   font-weight: 400;
 
   &.lg-heading {
-    font-size: 7rem;
+    font-size: 6rem;
   }
 
   &.sm-heading {
@@ -67,8 +32,9 @@ h3 {
     background: rgba(lighten($primary-color, 2), 0.5);
   }
 }
+
 a {
-  color: white;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -84,17 +50,18 @@ header {
 
 main {
   padding: 4rem;
-  height: 100%;
+  // height: 100%;
+  min-height: calc(100vh - 60px);
 
   .icons {
     margin-top: 1rem;
 
     a {
       padding: 0.4rem;
+      @include easeOut;
 
       &:hover {
         color: $secondary-color;
-        @include easeOut();
       }
     }
   }
@@ -105,14 +72,8 @@ main {
       margin-top: 20vh;
     }
   }
-
-  // Branding Side;
-  &-branding {
-    background: #444;
-    transform: translate3d(0, 100%, 0);
-    @include easeOut;
-  }
 }
+
 .about-info {
   display: grid;
   grid-gap: 30px;
@@ -152,10 +113,84 @@ main {
   }
 }
 
+// Work/Projects
+.project {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+    border: 3px #fff solid;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+
+// Contact Page
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    @include easeOut;
+
+    &:hover {
+      padding: 0.5rem 1.5rem;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+      span {
+        color: set-text-color($secondary-color);
+      }
+    }
+  }
+}
+
+// Button Styles
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #fff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
+}
+
 #main-footer {
   text-align: center;
   padding: 1rem;
+  padding-left: 40px;
   background: darken($primary-color, 10);
   color: set-text-color($primary-color);
   height: 60px;
 }
+
+.copyright {
+  padding-left: 40px;
+}
+@import "mobile";
